@@ -1,4 +1,43 @@
 __pycache__/
 *.pyc
-data/vanmitra.db
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
 .venv/
+venv/
+env/
+
+# Databases
+data/vanmitra.db
+*.db
+*.sqlite
+*.sqlite3
+
+# Model artifacts
+models/**/*.joblib
+models/**/*.pkl
+
+# Test / cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Environment / secrets
+.env
+.env.*
+.streamlit/secrets.toml
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+
+# Agent / tooling
+.kilo/
