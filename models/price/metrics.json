@@ -1,0 +1,200 @@
+{
+  "data_source": "Agmarknet monthly state prices (Govt. of India open data, GODL-India) via github.com/herrrickshaw/india-mandi-arrivals",
+  "target": "next-month log price change per (commodity, state) series",
+  "focus_commodity": "Tamarind Fruit",
+  "n_series": 1588,
+  "n_labelled_rows": 99861,
+  "splits": {
+    "train_targets_to": "2023-12",
+    "validation_targets_to": "2024-12",
+    "test_targets": "2025-01..2026-09",
+    "n_train": 55786,
+    "n_val": 15814,
+    "n_test": 26966
+  },
+  "selected_model": "hgb_absolute",
+  "results": {
+    "naive_no_change": {
+      "all_series": {
+        "val": {
+          "mae_rs_qtl": 791.0,
+          "mape_pct": 17.04,
+          "n": 15814
+        },
+        "test": {
+          "mae_rs_qtl": 791.2,
+          "mape_pct": 18.25,
+          "n": 26966
+        }
+      },
+      "forest_group": {
+        "val": {
+          "mae_rs_qtl": 667.9,
+          "mape_pct": 22.86,
+          "n": 184
+        },
+        "test": {
+          "mae_rs_qtl": 821.2,
+          "mape_pct": 23.64,
+          "n": 287
+        }
+      },
+      "Tamarind Fruit": {
+        "val": {
+          "mae_rs_qtl": 1391.3,
+          "mape_pct": 46.04,
+          "n": 52
+        },
+        "test": {
+          "mae_rs_qtl": 1146.5,
+          "mape_pct": 13.09,
+          "n": 114
+        }
+      }
+    },
+    "seasonal_mean": {
+      "all_series": {
+        "val": {
+          "mae_rs_qtl": 907.5,
+          "mape_pct": 17.81,
+          "n": 15814
+        },
+        "test": {
+          "mae_rs_qtl": 880.2,
+          "mape_pct": 18.47,
+          "n": 26966
+        }
+      },
+      "forest_group": {
+        "val": {
+          "mae_rs_qtl": 756.4,
+          "mape_pct": 26.2,
+          "n": 184
+        },
+        "test": {
+          "mae_rs_qtl": 1107.2,
+          "mape_pct": 26.55,
+          "n": 287
+        }
+      },
+      "Tamarind Fruit": {
+        "val": {
+          "mae_rs_qtl": 1748.1,
+          "mape_pct": 55.56,
+          "n": 52
+        },
+        "test": {
+          "mae_rs_qtl": 1650.0,
+          "mape_pct": 17.77,
+          "n": 114
+        }
+      }
+    },
+    "ridge": {
+      "all_series": {
+        "val": {
+          "mae_rs_qtl": 819.3,
+          "mape_pct": 16.0,
+          "n": 15814
+        }
+      },
+      "forest_group": {
+        "val": {
+          "mae_rs_qtl": 728.5,
+          "mape_pct": 21.54,
+          "n": 184
+        }
+      },
+      "Tamarind Fruit": {
+        "val": {
+          "mae_rs_qtl": 1569.5,
+          "mape_pct": 40.59,
+          "n": 52
+        }
+      }
+    },
+    "hgb_squared": {
+      "all_series": {
+        "val": {
+          "mae_rs_qtl": 756.2,
+          "mape_pct": 15.24,
+          "n": 15814
+        }
+      },
+      "forest_group": {
+        "val": {
+          "mae_rs_qtl": 734.5,
+          "mape_pct": 20.79,
+          "n": 184
+        }
+      },
+      "Tamarind Fruit": {
+        "val": {
+          "mae_rs_qtl": 1600.7,
+          "mape_pct": 39.06,
+          "n": 52
+        }
+      }
+    },
+    "hgb_absolute": {
+      "all_series": {
+        "val": {
+          "mae_rs_qtl": 728.5,
+          "mape_pct": 14.94,
+          "n": 15814
+        },
+        "test": {
+          "mae_rs_qtl": 726.5,
+          "mape_pct": 16.51,
+          "n": 26966
+        }
+      },
+      "forest_group": {
+        "val": {
+          "mae_rs_qtl": 646.4,
+          "mape_pct": 21.32,
+          "n": 184
+        },
+        "test": {
+          "mae_rs_qtl": 747.3,
+          "mape_pct": 31.07,
+          "n": 287
+        }
+      },
+      "Tamarind Fruit": {
+        "val": {
+          "mae_rs_qtl": 1363.2,
+          "mape_pct": 41.85,
+          "n": 52
+        },
+        "test": {
+          "mae_rs_qtl": 1030.3,
+          "mape_pct": 11.13,
+          "n": 114
+        }
+      }
+    }
+  },
+  "test_skill_vs_naive_mae_pct": {
+    "all_series": 8.18,
+    "Tamarind Fruit": 10.14
+  },
+  "tamarind_test_bootstrap95_naive_minus_model_mae_rs_qtl": [
+    -45.8,
+    319.3
+  ],
+  "interval_logchange_q10_q90": [
+    -0.22200025746621532,
+    0.3414680360702224
+  ],
+  "interval_coverage_on_tamarind_test_pct": 89.5,
+  "deployment": "refit on all labelled rows; reported metrics come from the pre-test model (train+validation only)",
+  "caveats": [
+    "Skill over the naive baseline is modest; one-month-ahead prices are noisy.",
+    "Agmarknet prices mix grades/varieties at regulated mandis, not forest-gate prices.",
+    "Coverage of the Nov 2025+ period widened in Agmarknet; arrivals may not be comparable over time.",
+    "Decision support, not a price guarantee."
+  ],
+  "sklearn_version": "1.8.0",
+  "trained_on": "2026-10-31"
+}

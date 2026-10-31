@@ -1,0 +1,2 @@
+age_days,storage_humidity_pct,storage_temp_c,moisture_pct,product,storage_type,packaging_type,visible_mold,pest_signs,producer_group,outcome
+42,78,31,13.5,Tamarind,Ground-level room,Jute sack,0,0,GROUP-A,0
